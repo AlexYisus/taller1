@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %} 
+{% load static %} 
+{% block content %} 
+{% for shop in listShop %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="col-md-4">
+        <div class="card mb-4 product-wap rounded-0">
+          <div class="card rounded-0 align=left">
+            <img class="card-img rounded-0 img-fluid" src="{{shop.image.url}}"/>
+            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+              <ul class="list-unstyled">
+                <li>
+                  <a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <a href="#" class="h3 text-decoration-none">{{shop.title}}</a>
+            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+              <li class="pt-2"></li>
+            </ul>
+            <ul class="list-unstyled d-flex justify-content-center mb-1"></ul>
+            <p class="text-center mb-0">{{shop.content}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %} 
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+{% for promotion in listpromotion %}
+<!-- Start Banner Hero -->
+    
+<section class="bg-light">   
+  <div class="container">
+      <div class="row p-5">
+          <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+              <img class="img-fluid" src="{{promotion.image.url}}" alt="">
+          </div>
+          <div class="col-lg-6 mb-0 d-flex align-items-center">
+              <div class="text-align-left align-self-center">
+                  <h1 class="h1 text-success"><b>{{promotion.title}}</b></h1>
+                  <h3 class="h2">{{promotion.subtitle}}</h3>
+                  <p>{{promotion.content}}</p>
+                  {% if user.is_authenticated %}
+                  <p><a href="{% url 'admin:promotion_promotion_change' promotion.id %}">EDITAR </a></p>
+                    {% endif %}
+              </div>
+          </div>
+      </div>
+  </div> 
+</section>
+{% endfor %}
+{% endblock  %}

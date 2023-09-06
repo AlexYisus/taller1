@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+{% for news in listnews %}
+<!-- Start Banner Hero -->
+<section class="bg-light">   
+  <div class="container">
+      <div class="row p-5">
+          <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+              <img class="img-fluid" src="{{news.image.url}}" alt="">
+          </div>
+          <div class="col-lg-6 mb-0 d-flex align-items-center">
+              <div class="text-align-left align-self-center">
+                  <h1 class="h1 text-success"><b>{{news.published|date:"SHORT_DATE_FORMAT"}}</b></h1>
+                  <h3 class="h2">{{news.title}}</h3>
+                  <p>{{news.content}}</p>
+                  <span class="section-heading-under"
+                >Publicado por <em><b>{{news.author}}</b></em> en
+                {% for category in news.categories.all %}
+                    <em><a>{{category.name}} {% if not forloop.last %},{% endif %}</a></em>
+                {% endfor %}
+                {% if user.is_authenticated %}
+              <p><a href="{% url 'admin:news_news_change' news.id %}">EDITAR </a></p>
+                {% endif %}
+                </span>
+                  
+              </div>
+          </div>
+      </div>
+  </div> 
+</section>
+{% endfor %}
+{% endblock  %}

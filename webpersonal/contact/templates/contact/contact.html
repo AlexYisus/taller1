@@ -1,0 +1,72 @@
+{% extends 'core/base.html' %}
+
+
+{%load static%}
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+<!-- Start Content Page -->
+<div class="container-fluid bg-light py-5">
+    <div class="col-md-6 m-auto text-center">
+        <h1 class="h1">Contactanos</h1>
+        <p>
+            Acontinuación podrás llenar un formulario para obtener más información
+        </p>
+    </div>
+</div>
+
+<!-- Start Map -->
+<div style="width: 100%; height: 90px;"></div>
+
+<div style="text-align:center; border-black">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d838.6454182962617!2d-78.6129839990696!3d-0.9303116607535955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d461f1fac0fd83%3A0x689744ecca74d4aa!2sElectroferreter%C3%ADa%20CCAJ!5e0!3m2!1ses!2sec!4v1694016291363!5m2!1ses!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<!-- Ena Map -->
+
+<!-- Start Contact -->
+<div class="container py-5">
+    <div class="row py-5">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Nombre *</label>
+                <div class="input-group">
+                   {{contactForm.name}}
+                </div>
+                {{contactForm.name.errors}}
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <div class="input-group">
+                  {{contactForm.email}}
+                </div>
+                {{contactForm.email.errors}}
+                <!--<ul class="errorlist">
+                    <li>El email no es correcto.</li>
+                </ul>-->
+            </div>
+            <div class="form-group">
+                <label>Asunto *</label>
+                <div class="input-group">
+                  {{contactForm.subject}}
+                    
+                </div>
+                
+                {{contactForm.subject.errors}}
+            </div>
+            <div class="form-group">
+                <label>Mensaje *</label>
+                <div class="input-group">
+                  {{contactForm.message}}
+                </div>
+                {{contactForm.message.errors}}
+            </div>
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary btn-block py-2" value="Enviar">
+            </div>
+        </form>
+            <!--Fin formulario de contacto -->
+    </div>
+</div>
+<!-- End Contact -->
+{%endblock%}
+

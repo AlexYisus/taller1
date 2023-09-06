@@ -21,8 +21,6 @@ def shopsingle(request):
 
     return render(request, "core/shopsingle.html")
 
-
-
 def contact(request):
 
     return render(request, "core/contact.html")
